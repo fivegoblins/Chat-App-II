@@ -22,9 +22,12 @@
                     Send
                 </button>
             </div>
-            <div id='messages'></div>
+            <div id='messages'>
+                
+            </div>
         </div>
         <script>
+            const socket = io();
             $(()=> {
                 $('#send').click(()=> {
                     sendMessage({
@@ -32,8 +35,9 @@
                         message: $('#message').val()
                     });
                 })
-                getMessages()
+                getMessages();
             })
+            socket.on('message', addMessages);
             function addMessages(message){
                 $('#messages').append(`
                 <h4>${message.name}</h4>
@@ -47,8 +51,6 @@
             function sendMessage(message){
                 $.post('http://localhost:3000/messages', message);
             }
-            const socket = io();
-            socket.on('message', addMessages);
         </script>
     </body>
 </html>
