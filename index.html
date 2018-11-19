@@ -3,6 +3,7 @@
     <head>
         <title>Chat</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='/socket.io/socket.io.js'></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     </head>
     <body>
@@ -44,8 +45,10 @@
                 })
             }
             function sendMessage(message){
-                $.post('http://localhost:3000/messages', message)
+                $.post('http://localhost:3000/messages', message);
             }
+            const socket = io();
+            socket.on('message', addMessages);
         </script>
     </body>
 </html>

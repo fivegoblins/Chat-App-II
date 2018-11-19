@@ -1,11 +1,17 @@
 const express = require('express');
 const server = express();
+const http = require('http').Server(server);
+const io = require('socket.io')(http);
 const port = 8000;
 
 const db = require('./data/dbConfig.js');
 
 server.use(express.static(__dirname));
-server.use(expres.json());
+server.use(express.json());
+
+io.on('connection', ()=> {
+    console.log('user connected');
+});
 
 server.get('/messages', (req, res)=> {
     Message.find({}, (err, messages)=> {
@@ -19,9 +25,10 @@ server.post('/messages', (req, res)=> {
         if(err) {
             res.send(500);
         } else {
+            io.emit('message', req.body);
             res.send(200);
         }
-    })
+    });
 });
 
 
