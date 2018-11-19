@@ -1,10 +1,19 @@
 const express = require('express');
 const server = express();
+const mongoose = require('mongoose');
+const db = 'mongodb://alexswartz:sunnyday4!@ds247688.mlab.com:47688/chat-messages';
 const http = require('http').Server(server);
 const io = require('socket.io')(http);
 const port = 8000;
 
-const db = require('./data/dbConfig.js');
+mongoose.connect(db, (err)=> {
+    console.log('mongodb connected', err);
+});
+
+const Message = mongoose.model('Message', {
+    name: String,
+    message: String
+});
 
 server.use(express.static(__dirname));
 server.use(express.json());
