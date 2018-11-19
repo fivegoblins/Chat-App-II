@@ -2,6 +2,8 @@ const express = require('express');
 const server = express();
 const port = 8000;
 
+const db = require('./data/dbConfig.js');
+
 server.use(express.static(__dirname));
 
 
