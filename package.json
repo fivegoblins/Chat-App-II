@@ -1,0 +1,11 @@
+{
+  "name": "Chat-App-II",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/fivegoblins/Chat-App-II.git",
+  "author": "Alexandra <alexswartz9753@gmail.com>",
+  "license": "MIT"
+}
