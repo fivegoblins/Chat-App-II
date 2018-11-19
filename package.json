@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": "https://github.com/fivegoblins/Chat-App-II.git",
   "author": "Alexandra <alexswartz9753@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "nodemon": "^1.18.6",
+    "sqlite3": "^4.0.4"
   }
 }
