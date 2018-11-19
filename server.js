@@ -1,5 +1,6 @@
 const express = require('express');
 const server = express();
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const db = 'mongodb://alexswartz:sunnyday4!@ds247688.mlab.com:47688/chat-messages';
 const http = require('http').Server(server);
@@ -16,7 +17,8 @@ const Message = mongoose.model('Message', {
 });
 
 server.use(express.static(__dirname));
-server.use(express.json());
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: false }));
 
 io.on('connection', ()=> {
     console.log('user connected');
